@@ -69,7 +69,11 @@ Checkpoints are saved in `model_save/EMOCPD_VoxelRoI/`.
 #### 3. DMS fine-tuning
 
 ```bash
-python ProMut1/rl_mutation_model.py --train_data train_0613.npz --val_data val_0613.npz --pretrained_model ProMut1/best_7093model.pth.tar --output_dir model_save/ProMut_2
+python ProMut1/rl_mutation_model.py
+--train_data train_0613.npz
+--val_data val_0613.npz
+--pretrained_model ProMut1/best_7093model.pth.tar
+--output_dir model_save/ProMut_2
 ```
 
 The pretrained backbone is frozen and adapted with LoRA to align predicted mutation rankings with experimental DMS rankings.
@@ -89,7 +93,11 @@ Outputs include `best_model.pth`, periodic checkpoints, `final_model.pth`, and p
 **TS50 / TS500 sequence recovery.** Predict the wild-type residue from its local structure and report Top-1 recovery accuracy.
 
 ```bash
-python ProMut1/predict_emocpd.py --protein-csv testset_TS50_csv/csv/protein.csv --model ProMut1/best_7093model.pth.tar --chain A --topk 20 --out predictions/TS50_protein.csv
+python ProMut1/predict_emocpd.py
+ --protein-csv testset_TS50_csv/csv/protein.csv
+ --model ProMut1/best_7093model.pth.tar
+ --chain A --topk 20
+ --out predictions/TS50_protein.csv
 ```
 
 **DMS mutation ranking.** Fine-tuning evaluates `val_0613.npz` protein by protein using the rank-correlation loss implemented in `rl_mutation_model.py`.
