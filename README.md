@@ -100,6 +100,10 @@ python ProMut1/predict_emocpd.py
  --out predictions/TS50_protein.csv
 ```
 
-**DMS mutation ranking.** Fine-tuning evaluates `val_0613.npz` protein by protein using the rank-correlation loss implemented in `rl_mutation_model.py`.
+**DMS mutation ranking.**
 
-`predict_emocpd.py` loads the pretrained backbone and is not a standalone inference entry point for the fine-tuned `best_model.pth`.
+To evaluate ProMut’s ranking performance in mutation-effect prediction, we compared Spearman correlation coefficients on the DMS test set. The DMS test set contains large-scale, experimentally validated mutation functional scores, enabling a comprehensive assessment of the model’s ability to capture mutation-effect trends.
+
+```bash
+Fine-tuning evaluates `val_0613.npz` protein by protein using the rank-correlation loss implemented in `rl_mutation_model.py`.
+```
