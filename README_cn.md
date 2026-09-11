@@ -69,7 +69,11 @@ python ProMut1/train.py
 #### 3. DMS 突变数据微调
 
 ```bash
-python ProMut1/rl_mutation_model.py --train_data train_0613.npz --val_data val_0613.npz --pretrained_model ProMut1/best_7093model.pth.tar --output_dir model_save/ProMut_2
+python ProMut1/rl_mutation_model.py
+--train_data train_0613.npz
+--val_data val_0613.npz
+--pretrained_model ProMut1/best_7093model.pth.tar
+--output_dir model_save/ProMut_2
 ```
 
 冻结预训练骨干并加入 LoRA，使预测突变排序接近实验 DMS 排序。
@@ -89,7 +93,11 @@ python ProMut1/rl_mutation_model.py --train_data train_0613.npz --val_data val_0
 **TS50 / TS500 序列恢复实验。** 根据局部结构预测野生型残基，以 Top-1 序列恢复准确率评价模型。
 
 ```bash
-python ProMut1/predict_emocpd.py --protein-csv testset_TS50_csv/csv/protein.csv --model ProMut1/best_7093model.pth.tar --chain A --topk 20 --out predictions/TS50_protein.csv
+python ProMut1/predict_emocpd.py
+--protein-csv testset_TS50_csv/csv/protein.csv
+--model ProMut1/best_7093model.pth.tar
+--chain A --topk 20
+--out predictions/TS50_protein.csv
 ```
 
 **DMS 突变效应排序实验。** 微调过程中按蛋白质验证 `val_0613.npz`，使用 `rl_mutation_model.py` 中实现的排序相关损失。
