@@ -100,6 +100,11 @@ python ProMut1/predict_emocpd.py
 --out predictions/TS50_protein.csv
 ```
 
-**DMS 突变效应排序实验。** 微调过程中按蛋白质验证 `val_0613.npz`，使用 `rl_mutation_model.py` 中实现的排序相关损失。
+**DMS 突变效应排序实验。** 
 
-`predict_emocpd.py` 加载的是预训练骨干，不能作为 DMS 微调输出 `best_model.pth` 的独立推理入口。
+为了验证ProMut模型在突变效应预测任务中的排序能力，我们在DMS测试集进行了Spearman相关系数的比较。DMS测试集包含了大量经过实验验证的突变体功能评分，能够全面评估模型对突变效应趋势的捕捉能力。
+
+```bash
+微调过程中按蛋白质验证 `val_0613.npz`
+使用 `rl_mutation_model.py` 中实现的排序相关损失。
+```
